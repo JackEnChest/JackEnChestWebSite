@@ -74,7 +74,8 @@
             </iframe>
 
             <script>
-                const authRes = JSON.parse(AuthTwitch());
+                const authRes = AuthTwitch();
+                const authJson = JSON.parse(authRes);
                 console.log(authRes.access_token);
                 GetTwitchClips(authRes.access_token);
             </script>
