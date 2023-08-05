@@ -76,7 +76,7 @@
             <script>
                 const authRes = AuthTwitch();
                 const authJson = JSON.parse(authRes);
-                console.log(authRes.access_token);
+                console.log(authJson);
                 GetTwitchClips(authRes.access_token);
             </script>
     
