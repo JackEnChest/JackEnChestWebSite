@@ -74,8 +74,8 @@
             </iframe>
 
             <script>
-                AuthTwitch();
-                GetTwitchClips();
+                const authRes = JSON.parse(AuthTwitch());
+                GetTwitchClips(authRes.access_token);
             </script>
     
             <h3>Réseaux</h3>
