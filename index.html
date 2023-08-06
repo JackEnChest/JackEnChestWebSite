@@ -9,6 +9,17 @@
         <script src="APIFunctions.js"></script>
     </head>
 
+    <script>
+        async function APIRequests()
+        {
+            const token = await AuthTwitch();
+            const clipsInfo = await GetTwitchClips(token);
+        }
+
+        APIRequests()
+        
+    </script>
+
     <header>
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -73,10 +84,14 @@
                 width="560">
             </iframe>
 
-            <script>
-                const token = AuthTwitch();
-                GetTwitchClips(token);
-            </script>
+            <iframe 
+                src="https://clips.twitch.tv/embed?clip=MistyCrunchyCocoaCoolCat-EshTb15ns0xDdWoW&parent=www.example.com" 
+                frameborder="0" 
+                allowfullscreen="true" 
+                scrolling="no" 
+                height="315" 
+                width="560">
+            </iframe>
     
             <h3>Réseaux</h3>
             <a href="https://www.twitch.tv/jackenchest">Chaine twitch</a>

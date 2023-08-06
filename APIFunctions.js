@@ -1,6 +1,6 @@
-function AuthTwitch() {
+async function AuthTwitch() {
     var token
-    fetch('https://id.twitch.tv/oauth2/token', {
+    await fetch('https://id.twitch.tv/oauth2/token', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json'
@@ -23,21 +23,24 @@ function AuthTwitch() {
     return token
 }
 
-function GetTwitchClips(token) {
-    fetch('https://api.twitch.tv/helix/clips', {
+async function GetTwitchClips(token) {
+    var clipsInfo
+    console.log('Bearer '.concat(token))
+    await fetch('https://api.twitch.tv/helix/clips?broadcaster_id=474447255&first=5', {
         method: 'get',
         headers: {
           'Content-Type': 'application/json',
-          authorization: 'Bearer ' + token,
-          client_id: 'r4qo7fi9jgkak7s3xxnggz9o9ca0mn'
-        },
-        body: JSON.stringify({
-            broadcaster_id: '474447255',
-            first: 5
-        })
+          authorization: 'Bearer '.concat(token),
+          'client-id': 'r4qo7fi9jgkak7s3xxnggz9o9ca0mn'
+        }
     }).then(res => {
         return res.json()
     })
-    .then(data => console.log(data))
+    .then((data) => {
+        console.log(data)
+        clipsInfo = data
+    })
     .catch(error => console.log(error))
+
+    return clipsInfo
 }
