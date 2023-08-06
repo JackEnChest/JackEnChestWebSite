@@ -9,18 +9,6 @@
         <script src="APIFunctions.js"></script>
     </head>
 
-    <script>
-        var clipsInfo
-        async function APIRequests()
-        {
-            const token = await AuthTwitch();
-            clipsInfo = await GetTwitchClips(token);
-            console.log()
-        }
-
-        APIRequests()
-    </script>
-
     <header>
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -99,10 +87,25 @@
             </div>
 
             <script>
-                for (let i = 0; i < 5; i++)
+                async function DisplayClipsOnPages(clipsInfo) 
                 {
-                    document.getElementById("clips").innerHTML = '<iframe src="https://clips.twitch.tv/embed?clip=$clipsInfo[i].id&parent=jackenchest.github.io" frameborder="0" allowfullscreen="true" scrolling="no" height="315" width="560"></iframe>'
+                    await console.log(clipsInfo)
+                    for (let i = 0; i < 5; i++)
+                    {
+                        document.getElementById("clips").innerHTML = await `<iframe src="https://clips.twitch.tv/embed?clip=${clipsInfo.data[i].id}&parent=jackenchest.github.io" frameborder="0" allowfullscreen="true" scrolling="no" height="315" width="560"></iframe>`
+                    }
                 }
+
+                async function DisplayElementsOnScreen()
+                {
+                    const token = await AuthTwitch();
+                    const clipsInfo = await GetTwitchClips(token);
+                    console.log(clipsInfo)
+                    await DisplayClipsOnPages(clipsInfo)
+                }
+
+                DisplayElementsOnScreen()
+                
             </script>
     
             <h3>Réseaux</h3>
