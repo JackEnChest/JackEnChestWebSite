@@ -73,15 +73,6 @@
                 width="560">
             </iframe>
 
-            <iframe 
-                src="https://clips.twitch.tv/embed?clip=MistyCrunchyCocoaCoolCat-EshTb15ns0xDdWoW&parent=jackenchest.github.io" 
-                frameborder="0" 
-                allowfullscreen="true" 
-                scrolling="no" 
-                height="315" 
-                width="560">
-            </iframe>
-
             <div id="clips">
 
             </div>
@@ -92,7 +83,7 @@
                     await console.log(clipsInfo)
                     for (let i = 0; i < 5; i++)
                     {
-                        document.getElementById("clips").innerHTML += await `<iframe src="https://clips.twitch.tv/embed?clip=${clipsInfo.data[i].id}&parent=jackenchest.github.io" frameborder="0" allowfullscreen="true" scrolling="no" height="315" width="560"></iframe>`
+                        document.getElementById("clips").innerHTML += await `<iframe src="https://clips.twitch.tv/embed?clip=${clipsInfo.data[i].id}&parent=jackenchest.github.io" frameborder="0" allowfullscreen="true" scrolling="no" height="200" width="355"></iframe>`
                     }
                 }
 
